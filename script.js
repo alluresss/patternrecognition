@@ -3,53 +3,43 @@ const shapes = ['blank', 'square', 'circle', 'triangle'];
 
 const puzzles = [
   {
-    name: 'Blank Upper Right',
     rule: 'The upper-right cell must be blank.',
     validate: () => isBlank(2)
   },
   {
-    name: 'Black Square Guards',
     rule: 'There must be at least one blank cell, and every blank cell must touch only black squares horizontally or vertically.',
     validate: () => blankIndexes().length > 0
       && blankIndexes().every(index => orthogonalNeighbors(index).every(neighbor => isCell(neighbor, 'black', 'square')))
   },
   {
-    name: 'Eight Filled Cells',
     rule: 'At least 8 grid cells must be filled with a shape instead of left blank.',
     validate: () => grid.filter(cell => !isBlankCell(cell)).length >= 8
   },
   {
-    name: 'Left Column Circles',
     rule: 'Any circle on the board must appear in the left column.',
     validate: () => grid.every((cell, index) => cell.shape !== shapeIndex('circle') || column(0).includes(index))
   },
   {
-    name: 'Three Circle Colors',
     rule: 'The board must contain a white circle, a gray circle, and a black circle.',
     validate: () => colors.every(color => grid.some(cell => isCellState(cell, color, 'circle')))
   },
   {
-    name: 'One Gray Top Shape',
     rule: 'The upper row must contain exactly one filled gray shape.',
     validate: () => row(0).filter(index => grid[index].color === colorIndex('gray') && !isBlank(index)).length === 1
   },
   {
-    name: 'White Shape Set',
     rule: 'The board must contain at least one white square, one white circle, and one white triangle.',
     validate: () => ['square', 'circle', 'triangle'].every(shape => grid.some(cell => isCellState(cell, 'white', shape)))
   },
   {
-    name: 'Middle White Triangle',
     rule: 'The center cell must be a white triangle.',
     validate: () => isCell(4, 'white', 'triangle')
   },
   {
-    name: 'Touching Black Squares',
     rule: 'At least two black squares must touch horizontally or vertically.',
     validate: () => neighbors().some(([a, b]) => isCell(a, 'black', 'square') && isCell(b, 'black', 'square'))
   },
   {
-    name: 'Bottom-Left White Circle',
     rule: 'The bottom-left cell must be a white circle.',
     validate: () => isCell(6, 'white', 'circle')
   }
@@ -173,7 +163,7 @@ function updateCell(cellElement, cellState, index) {
     rect.setAttribute('y', 10);
     rect.setAttribute('width', 40);
     rect.setAttribute('height', 40);
-    rect.setAttribute('fill', 'none');
+    rect.setAttribute('fill', shapeFill(cellState.color));
     rect.setAttribute('stroke', shapeStroke(cellState.color));
     rect.setAttribute('stroke-width', 4);
     svg.appendChild(rect);
@@ -184,7 +174,7 @@ function updateCell(cellElement, cellState, index) {
     circle.setAttribute('cx', 30);
     circle.setAttribute('cy', 30);
     circle.setAttribute('r', 20);
-    circle.setAttribute('fill', 'none');
+    circle.setAttribute('fill', shapeFill(cellState.color));
     circle.setAttribute('stroke', shapeStroke(cellState.color));
     circle.setAttribute('stroke-width', 4);
     svg.appendChild(circle);
@@ -193,7 +183,7 @@ function updateCell(cellElement, cellState, index) {
   if (shape === 'triangle') {
     const triangle = document.createElementNS(svg.namespaceURI, 'polygon');
     triangle.setAttribute('points', '30,8 8,52 52,52');
-    triangle.setAttribute('fill', 'none');
+    triangle.setAttribute('fill', shapeFill(cellState.color));
     triangle.setAttribute('stroke', shapeStroke(cellState.color));
     triangle.setAttribute('stroke-width', 4);
     svg.appendChild(triangle);
@@ -202,8 +192,16 @@ function updateCell(cellElement, cellState, index) {
   cellElement.appendChild(svg);
 }
 
+function shapeFill(color) {
+  return {
+    white: '#ffffff',
+    gray: '#9ca3af',
+    black: '#111827'
+  }[colors[color]];
+}
+
 function shapeStroke(color) {
-  return colors[color] === 'black' ? 'white' : 'black';
+  return colors[color] === 'gray' ? '#4b5563' : '#111827';
 }
 
 function init() {
@@ -221,7 +219,7 @@ function buildPuzzleLinks() {
     const link = document.createElement('a');
     link.className = 'puzzle-link';
     link.href = `#puzzle-${index + 1}`;
-    link.innerHTML = `<span>Puzzle ${index + 1}</span><strong>${puzzle.name}</strong>`;
+    link.innerHTML = `<strong>Puzzle ${index + 1}</strong>`;
     puzzleList.appendChild(link);
   });
 }
@@ -265,7 +263,7 @@ function updatePuzzleText() {
   if (currentPuzzle === null) return;
 
   const puzzle = puzzles[currentPuzzle];
-  document.getElementById('puzzleTitle').textContent = puzzle.name;
+  document.getElementById('puzzleTitle').textContent = `Puzzle ${currentPuzzle + 1}`;
   document.getElementById('rule').textContent = puzzle.rule;
   document.getElementById('puzzleCount').textContent = `Puzzle ${currentPuzzle + 1} of ${puzzles.length}`;
 }
@@ -290,7 +288,7 @@ function checkGrid() {
   const valid = puzzles[currentPuzzle].validate();
   const result = document.getElementById('result');
 
-  result.textContent = valid ? 'Solved!' : 'Not solved yet';
+  result.textContent = valid ? 'valid' : 'invalid';
   result.className = valid ? 'valid' : 'invalid';
 }
 
