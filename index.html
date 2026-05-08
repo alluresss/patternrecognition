@@ -7,22 +7,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game home" aria-labelledby="homeTitle">
-    <h1 id="homeTitle">3x3 Logic Grid</h1>
-    <p class="intro">Choose one of 10 separate logic puzzles.</p>
+  <main class="game">
+    <section id="home" class="home" aria-labelledby="homeTitle">
+      <h1 id="homeTitle">3x3 Logic Grid</h1>
+      <p class="intro">Choose one of 10 separate logic puzzles.</p>
+      <nav id="puzzleList" class="puzzle-list" aria-label="Puzzle list"></nav>
+    </section>
 
-    <nav class="puzzle-list" aria-label="Puzzle list">
-      <a class="puzzle-link" href="puzzle.html?p=1"><span>Puzzle 1</span><strong>Blank upper right</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=2"><span>Puzzle 2</span><strong>Blanks surrounded by black squares</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=3"><span>Puzzle 3</span><strong>At least 8 filled squares</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=4"><span>Puzzle 4</span><strong>Circles can only appear in left column</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=5"><span>Puzzle 5</span><strong>3 Different colors of circles</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=6"><span>Puzzle 6</span><strong>Exactly one gray shape in upper row</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=7"><span>Puzzle 7</span><strong>At least one white shape of every shape</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=8"><span>Puzzle 8</span><strong>White triangle in the middle</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=9"><span>Puzzle 9</span><strong>Adjacent black squares</strong></a>
-      <a class="puzzle-link" href="puzzle.html?p=10"><span>Puzzle 10</span><strong>White circle bottom left</strong></a>
-    </nav>
+    <section id="puzzleView" class="puzzle-view" aria-labelledby="puzzleTitle" hidden>
+      <a class="home-link" href="#">← Back to all puzzles</a>
+
+      <article class="puzzle-card">
+        <p id="puzzleCount" class="puzzle-count"></p>
+        <h1 id="puzzleTitle"></h1>
+        <p id="rule" class="rule"></p>
+      </article>
+
+      <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+      <div class="actions">
+        <button type="button" onclick="checkGrid()">Check</button>
+        <button type="button" onclick="resetGrid()">Reset</button>
+      </div>
+      <p id="result" aria-live="polite"></p>
+    </section>
+    <h1>3x3 Logic Grid</h1>
+    <p class="intro">Pick one of 10 logic puzzles, then click cells to cycle through colors and shapes.</p>
+
+    <section class="puzzle-card" aria-labelledby="puzzleTitle">
+      <div class="puzzle-controls">
+        <label for="puzzleSelect">Puzzle</label>
+        <select id="puzzleSelect"></select>
+        <span id="puzzleCount" class="puzzle-count"></span>
+      </div>
+      <h2 id="puzzleTitle"></h2>
+      <p id="rule" class="rule"></p>
+    </section>
+
+    <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+    <div class="actions">
+      <button type="button" onclick="checkGrid()">Check</button>
+      <button type="button" onclick="resetGrid()">Reset</button>
+    </div>
+    <p id="result" aria-live="polite"></p>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
