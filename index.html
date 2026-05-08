@@ -2,18 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid Logic Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="game">
+    <section id="home" class="home" aria-labelledby="homeTitle">
+      <h1 id="homeTitle">3x3 Logic Grid</h1>
+      <p class="intro">Choose one of 10 separate logic puzzles.</p>
+      <nav id="puzzleList" class="puzzle-list" aria-label="Puzzle list">
+        <a class="puzzle-link" href="#puzzle-1"><span>Puzzle 1</span><strong>Blank upper right</strong></a>
+        <a class="puzzle-link" href="#puzzle-2"><span>Puzzle 2</span><strong>Blanks surrounded by black squares</strong></a>
+        <a class="puzzle-link" href="#puzzle-3"><span>Puzzle 3</span><strong>At least 8 filled squares</strong></a>
+        <a class="puzzle-link" href="#puzzle-4"><span>Puzzle 4</span><strong>Circles can only appear in left column</strong></a>
+        <a class="puzzle-link" href="#puzzle-5"><span>Puzzle 5</span><strong>3 Different colors of circles</strong></a>
+        <a class="puzzle-link" href="#puzzle-6"><span>Puzzle 6</span><strong>Exactly one gray shape in upper row</strong></a>
+        <a class="puzzle-link" href="#puzzle-7"><span>Puzzle 7</span><strong>At least one white shape of every shape</strong></a>
+        <a class="puzzle-link" href="#puzzle-8"><span>Puzzle 8</span><strong>White triangle in the middle</strong></a>
+        <a class="puzzle-link" href="#puzzle-9"><span>Puzzle 9</span><strong>Adjacent black squares</strong></a>
+        <a class="puzzle-link" href="#puzzle-10"><span>Puzzle 10</span><strong>White circle bottom left</strong></a>
+      </nav>
+    </section>
 
-  <h2>3x3 Logic Grid</h2>
-  <p>Click cells to change them</p>
+    <section id="puzzleView" class="puzzle-view" aria-labelledby="puzzleTitle" hidden>
+      <a class="home-link" href="#">← Back to all puzzles</a>
 
-  <div id="grid" class="grid"></div>
+      <article class="puzzle-card">
+        <p id="puzzleCount" class="puzzle-count"></p>
+        <h1 id="puzzleTitle"></h1>
+        <p id="rule" class="rule"></p>
+      </article>
 
-  <button onclick="checkGrid()">Check</button>
-  <p id="result"></p>
+      <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+      <div class="actions">
+        <button type="button" onclick="checkGrid()">Check</button>
+        <button type="button" onclick="resetGrid()">Reset</button>
+      </div>
+      <p id="result" aria-live="polite"></p>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
