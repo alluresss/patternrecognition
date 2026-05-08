@@ -12,14 +12,13 @@ body {
 }
 
 .game {
-  width: min(92vw, 680px);
-  width: min(92vw, 560px);
+  width: min(92vw, 720px);
   margin: 0 auto;
   padding: 32px 0;
 }
 
 h1 {
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .intro {
@@ -36,12 +35,10 @@ h1 {
 
 .puzzle-link {
   display: flex;
-  min-height: 110px;
+  min-height: 112px;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-.puzzle-card {
-  margin: 24px auto;
   padding: 18px;
   border: 1px solid #d9e1ee;
   border-radius: 16px;
@@ -49,6 +46,7 @@ h1 {
   color: #1c2430;
   text-decoration: none;
   box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .puzzle-link:hover,
@@ -56,6 +54,7 @@ h1 {
   border-color: #365482;
   outline: none;
   transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(31, 45, 61, 0.12);
 }
 
 .puzzle-link span {
@@ -83,18 +82,6 @@ h1 {
   box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
 }
 
-  box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
-}
-
-.puzzle-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-select,
 button {
   border: 1px solid #9aa8ba;
   border-radius: 10px;
@@ -103,13 +90,6 @@ button {
   color: white;
   cursor: pointer;
   font: inherit;
-  font: inherit;
-}
-
-button {
-  background: #263b5e;
-  color: white;
-  cursor: pointer;
 }
 
 button:hover,
@@ -118,7 +98,7 @@ button:focus-visible {
 }
 
 .puzzle-count {
-  margin: 0;
+  margin: 0 0 8px;
   color: #6a7686;
   font-size: 0.9rem;
 }
@@ -139,14 +119,14 @@ button:focus-visible {
 }
 
 .cell {
+  display: flex;
   width: 100px;
   height: 100px;
-  border: 2px solid #111827;
-  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   padding: 0;
+  border: 2px solid #111827;
+  cursor: pointer;
 }
 
 .cell:focus-visible {
@@ -159,16 +139,25 @@ button:focus-visible {
 }
 
 .blank::after {
-  content: '';
   width: 24px;
   height: 24px;
   border: 2px dashed #94a3b8;
   border-radius: 50%;
+  content: '';
 }
 
-.white { background: white; }
-.gray { background: #9ca3af; }
-.black { background: #111827; color: white; }
+.white {
+  background: white;
+}
+
+.gray {
+  background: #9ca3af;
+}
+
+.black {
+  background: #111827;
+  color: white;
+}
 
 svg {
   width: 64px;
