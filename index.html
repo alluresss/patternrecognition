@@ -8,6 +8,29 @@
 </head>
 <body>
   <main class="game">
+    <section id="home" class="home" aria-labelledby="homeTitle">
+      <h1 id="homeTitle">3x3 Logic Grid</h1>
+      <p class="intro">Choose one of 10 separate logic puzzles.</p>
+      <nav id="puzzleList" class="puzzle-list" aria-label="Puzzle list"></nav>
+    </section>
+
+    <section id="puzzleView" class="puzzle-view" aria-labelledby="puzzleTitle" hidden>
+      <a class="home-link" href="#">← Back to all puzzles</a>
+
+      <article class="puzzle-card">
+        <p id="puzzleCount" class="puzzle-count"></p>
+        <h1 id="puzzleTitle"></h1>
+        <p id="rule" class="rule"></p>
+      </article>
+
+      <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+      <div class="actions">
+        <button type="button" onclick="checkGrid()">Check</button>
+        <button type="button" onclick="resetGrid()">Reset</button>
+      </div>
+      <p id="result" aria-live="polite"></p>
+    </section>
     <h1>3x3 Logic Grid</h1>
     <p class="intro">Pick one of 10 logic puzzles, then click cells to cycle through colors and shapes.</p>
 

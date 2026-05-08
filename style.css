@@ -12,6 +12,7 @@ body {
 }
 
 .game {
+  width: min(92vw, 680px);
   width: min(92vw, 560px);
   margin: 0 auto;
   padding: 32px 0;
@@ -26,12 +27,62 @@ h1 {
   color: #526070;
 }
 
+.puzzle-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.puzzle-link {
+  display: flex;
+  min-height: 110px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
 .puzzle-card {
   margin: 24px auto;
   padding: 18px;
   border: 1px solid #d9e1ee;
   border-radius: 16px;
   background: white;
+  color: #1c2430;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
+}
+
+.puzzle-link:hover,
+.puzzle-link:focus-visible {
+  border-color: #365482;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.puzzle-link span {
+  color: #6a7686;
+  font-size: 0.9rem;
+}
+
+.puzzle-link strong {
+  font-size: 1.1rem;
+}
+
+.home-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #263b5e;
+  font-weight: 700;
+}
+
+.puzzle-card {
+  margin: 0 auto 24px;
+  padding: 18px;
+  border: 1px solid #d9e1ee;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
+}
+
   box-shadow: 0 10px 30px rgba(31, 45, 61, 0.08);
 }
 
@@ -48,6 +99,10 @@ button {
   border: 1px solid #9aa8ba;
   border-radius: 10px;
   padding: 10px 14px;
+  background: #263b5e;
+  color: white;
+  cursor: pointer;
+  font: inherit;
   font: inherit;
 }
 
@@ -63,6 +118,7 @@ button:focus-visible {
 }
 
 .puzzle-count {
+  margin: 0;
   color: #6a7686;
   font-size: 0.9rem;
 }
@@ -96,6 +152,18 @@ button:focus-visible {
 .cell:focus-visible {
   outline: 4px solid #ffbf47;
   outline-offset: 2px;
+}
+
+.blank {
+  background: #f8fafc;
+}
+
+.blank::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 2px dashed #94a3b8;
+  border-radius: 50%;
 }
 
 .white { background: white; }
