@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Logic Game</title>
+  <title>3x3 Logic Grid</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="game">
     <section id="home" class="home" aria-labelledby="homeTitle">
       <h1 id="homeTitle">3x3 Logic Grid</h1>
-      <p class="intro">Choose one of 10 separate logic puzzles.</p>
+      <p class="intro">Click a puzzle card to open one of 10 separate logic puzzles.</p>
       <nav id="puzzleList" class="puzzle-list" aria-label="Puzzle list"></nav>
     </section>
 
@@ -31,26 +31,6 @@
       </div>
       <p id="result" aria-live="polite"></p>
     </section>
-    <h1>3x3 Logic Grid</h1>
-    <p class="intro">Pick one of 10 logic puzzles, then click cells to cycle through colors and shapes.</p>
-
-    <section class="puzzle-card" aria-labelledby="puzzleTitle">
-      <div class="puzzle-controls">
-        <label for="puzzleSelect">Puzzle</label>
-        <select id="puzzleSelect"></select>
-        <span id="puzzleCount" class="puzzle-count"></span>
-      </div>
-      <h2 id="puzzleTitle"></h2>
-      <p id="rule" class="rule"></p>
-    </section>
-
-    <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
-
-    <div class="actions">
-      <button type="button" onclick="checkGrid()">Check</button>
-      <button type="button" onclick="resetGrid()">Reset</button>
-    </div>
-    <p id="result" aria-live="polite"></p>
   </main>
 
   <script src="script.js"></script>
