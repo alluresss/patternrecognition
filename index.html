@@ -2,18 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid Logic Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="game">
+    <section id="home" class="home" aria-labelledby="homeTitle">
+      <h1 id="homeTitle">3x3 Logic Grid</h1>
+      <p class="intro">Choose one of 10 separate logic puzzles.</p>
+      <nav id="puzzleList" class="puzzle-list" aria-label="Puzzle list"></nav>
+    </section>
 
-  <h2>3x3 Logic Grid</h2>
-  <p>Click cells to change them</p>
+    <section id="puzzleView" class="puzzle-view" aria-labelledby="puzzleTitle" hidden>
+      <a class="home-link" href="#">← Back to all puzzles</a>
 
-  <div id="grid" class="grid"></div>
+      <article class="puzzle-card">
+        <p id="puzzleCount" class="puzzle-count"></p>
+        <h1 id="puzzleTitle"></h1>
+        <p id="rule" class="rule"></p>
+      </article>
 
-  <button onclick="checkGrid()">Check</button>
-  <p id="result"></p>
+      <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+      <div class="actions">
+        <button type="button" onclick="checkGrid()">Check</button>
+        <button type="button" onclick="resetGrid()">Reset</button>
+      </div>
+      <p id="result" aria-live="polite"></p>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
