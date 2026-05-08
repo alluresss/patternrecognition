@@ -31,6 +31,26 @@
       </div>
       <p id="result" aria-live="polite"></p>
     </section>
+    <h1>3x3 Logic Grid</h1>
+    <p class="intro">Pick one of 10 logic puzzles, then click cells to cycle through colors and shapes.</p>
+
+    <section class="puzzle-card" aria-labelledby="puzzleTitle">
+      <div class="puzzle-controls">
+        <label for="puzzleSelect">Puzzle</label>
+        <select id="puzzleSelect"></select>
+        <span id="puzzleCount" class="puzzle-count"></span>
+      </div>
+      <h2 id="puzzleTitle"></h2>
+      <p id="rule" class="rule"></p>
+    </section>
+
+    <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+    <div class="actions">
+      <button type="button" onclick="checkGrid()">Check</button>
+      <button type="button" onclick="resetGrid()">Reset</button>
+    </div>
+    <p id="result" aria-live="polite"></p>
   </main>
 
   <script src="script.js"></script>
