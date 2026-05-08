@@ -57,11 +57,6 @@ h1 {
   box-shadow: 0 14px 34px rgba(31, 45, 61, 0.12);
 }
 
-.puzzle-link span {
-  color: #6a7686;
-  font-size: 0.9rem;
-}
-
 .puzzle-link strong {
   font-size: 1.1rem;
 }
@@ -146,17 +141,10 @@ button:focus-visible {
   content: '';
 }
 
-.white {
-  background: white;
-}
-
-.gray {
-  background: #9ca3af;
-}
-
+.white,
+.gray,
 .black {
-  background: #111827;
-  color: white;
+  background: #f8fafc;
 }
 
 svg {
