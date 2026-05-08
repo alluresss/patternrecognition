@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logic Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game puzzle-view" aria-labelledby="puzzleTitle">
+    <a class="home-link" href="index.html">← Back to all puzzles</a>
+
+    <article class="puzzle-card">
+      <p id="puzzleCount" class="puzzle-count"></p>
+      <h1 id="puzzleTitle"></h1>
+      <p id="rule" class="rule"></p>
+    </article>
+
+    <div id="grid" class="grid" aria-label="Logic puzzle grid"></div>
+
+    <div class="actions">
+      <button type="button" onclick="checkGrid()">Check</button>
+      <button type="button" onclick="resetGrid()">Reset</button>
+    </div>
+    <p id="result" aria-live="polite"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

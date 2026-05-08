@@ -2,19 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid Logic Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="game home" aria-labelledby="homeTitle">
+    <h1 id="homeTitle">3x3 Logic Grid</h1>
+    <p class="intro">Choose one of 10 separate logic puzzles.</p>
 
-  <h2>3x3 Logic Grid</h2>
-  <p>Click cells to change them</p>
-
-  <div id="grid" class="grid"></div>
-
-  <button onclick="checkGrid()">Check</button>
-  <p id="result"></p>
-
+    <nav class="puzzle-list" aria-label="Puzzle list">
+      <a class="puzzle-link" href="puzzle.html?p=1"><span>Puzzle 1</span><strong>Blank upper right</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=2"><span>Puzzle 2</span><strong>Blanks surrounded by black squares</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=3"><span>Puzzle 3</span><strong>At least 8 filled squares</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=4"><span>Puzzle 4</span><strong>Circles can only appear in left column</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=5"><span>Puzzle 5</span><strong>3 Different colors of circles</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=6"><span>Puzzle 6</span><strong>Exactly one gray shape in upper row</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=7"><span>Puzzle 7</span><strong>At least one white shape of every shape</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=8"><span>Puzzle 8</span><strong>White triangle in the middle</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=9"><span>Puzzle 9</span><strong>Adjacent black squares</strong></a>
+      <a class="puzzle-link" href="puzzle.html?p=10"><span>Puzzle 10</span><strong>White circle bottom left</strong></a>
+    </nav>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
