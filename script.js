@@ -262,9 +262,7 @@ function showPuzzle(index) {
 function updatePuzzleText() {
   if (currentPuzzle === null) return;
 
-  const puzzle = puzzles[currentPuzzle];
   document.getElementById('puzzleTitle').textContent = `Puzzle ${currentPuzzle + 1}`;
-  document.getElementById('rule').textContent = puzzle.rule;
   document.getElementById('puzzleCount').textContent = `Puzzle ${currentPuzzle + 1} of ${puzzles.length}`;
 }
 
