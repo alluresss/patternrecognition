@@ -3,43 +3,53 @@ const shapes = ['blank', 'square', 'circle', 'triangle'];
 
 const puzzles = [
   {
+    title: 'Blank Space',
     rule: 'The upper-right cell must be blank.',
     validate: () => isBlank(2)
   },
   {
+    title: 'Blank Surroundings',
     rule: 'There must be at least one blank cell, and every blank cell must touch only black squares horizontally or vertically.',
     validate: () => blankIndexes().length > 0
       && blankIndexes().every(index => orthogonalNeighbors(index).every(neighbor => isCell(neighbor, 'black', 'square')))
   },
   {
+    title: 'To Fill or Not to Fill',
     rule: 'At least 8 grid cells must be filled with a shape instead of left blank.',
     validate: () => grid.filter(cell => !isBlankCell(cell)).length >= 8
   },
   {
+    title: 'Circular Positioning',
     rule: 'Any circle on the board must appear in the left column.',
     validate: () => grid.every((cell, index) => cell.shape !== shapeIndex('circle') || column(0).includes(index))
   },
   {
+    title: 'Circular Dilemma',
     rule: 'The board must contain a white circle, a gray circle, and a black circle.',
     validate: () => colors.every(color => grid.some(cell => isCellState(cell, color, 'circle')))
   },
   {
+    title: 'The Upper Row',
     rule: 'The upper row must contain exactly one filled gray shape.',
     validate: () => row(0).filter(index => grid[index].color === colorIndex('gray') && !isBlank(index)).length === 1
   },
   {
+    title: 'Whiteout',
     rule: 'The board must contain at least one white square, one white circle, and one white triangle.',
     validate: () => ['square', 'circle', 'triangle'].every(shape => grid.some(cell => isCellState(cell, 'white', shape)))
   },
   {
+    title: 'White Triangle',
     rule: 'The center cell must be a white triangle.',
     validate: () => isCell(4, 'white', 'triangle')
   },
   {
+    title: 'Adjacency',
     rule: 'At least two black squares must touch horizontally or vertically.',
     validate: () => neighbors().some(([a, b]) => isCell(a, 'black', 'square') && isCell(b, 'black', 'square'))
   },
   {
+    title: 'White Circle',
     rule: 'The bottom-left cell must be a white circle.',
     validate: () => isCell(6, 'white', 'circle')
   }
@@ -219,7 +229,7 @@ function buildPuzzleLinks() {
     const link = document.createElement('a');
     link.className = 'puzzle-link';
     link.href = `#puzzle-${index + 1}`;
-    link.innerHTML = `<strong>Puzzle ${index + 1}</strong>`;
+    link.innerHTML = `<strong>${puzzle.title}</strong>`;
     puzzleList.appendChild(link);
   });
 }
@@ -262,7 +272,7 @@ function showPuzzle(index) {
 function updatePuzzleText() {
   if (currentPuzzle === null) return;
 
-  document.getElementById('puzzleTitle').textContent = `Puzzle ${currentPuzzle + 1}`;
+  document.getElementById('puzzleTitle').textContent = puzzles[currentPuzzle].title;
   document.getElementById('puzzleCount').textContent = `Puzzle ${currentPuzzle + 1} of ${puzzles.length}`;
 }
 
