@@ -176,12 +176,6 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-.rule {
-  min-height: 44px;
-  margin: 0 auto;
-  color: #334155;
-  line-height: 1.55;
-}
 
 .grid {
   display: grid;
